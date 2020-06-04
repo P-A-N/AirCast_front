@@ -1,0 +1,29 @@
+{
+  "name": "aircast_front",
+  "version": "1.0.0",
+  "description": "prototyping co2 monitor s",
+  "main": "index.js",
+  "dependencies": {
+    "firebase": "^7.14.6",
+    "parcel-bundler": "^1.12.4",
+    "query-string": "^6.12.1",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "react-firebase-hooks": "^2.2.0",
+    "react-router-dom": "^5.2.0",
+    "react-vis": "^1.11.7",
+    "sass": "^1.26.7",
+    "svg-react-loader": "^0.4.6",
+    "typescript": "^3.9.3"
+  },
+  "devDependencies": {
+    "@types/react": "^16.9.35",
+    "@types/react-dom": "^16.9.8",
+    "@types/react-router-dom": "^5.1.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "PAN. CO., LTD",
+  "license": "MIT"
+}

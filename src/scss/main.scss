@@ -1,0 +1,56 @@
+$cyan:#23daff;
+$magenda:#ff18b3;
+$hintBg:#3d3d3d;
+$contentsWidth:600px;
+
+
+.container{
+    font-family: a-otf-gothic-bbb-pr6n,sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    position: relative;
+    width: $contentsWidth;
+    .header{
+        position: absolute;
+        @extend .container;
+        width:100%;
+        z-index: 1;
+        .logo
+        {
+            width: 15%;
+            padding-top: 10px;
+            padding-right: 20px;
+            float:right;
+        }
+    }
+    .contentsBody
+    {
+    }
+    
+    .footer{
+        @extend .container;
+    }
+}
+
+
+
+.hint
+{
+    font-size: 10pt;
+    opacity: 0.6;
+    p
+    {
+        border-radius: 5px;
+        padding-left:10px;
+        padding-right: 10px;
+        padding-top: 1px;
+        background-color: $hintBg;
+        color: #fefefe;
+    }
+    .date{
+        font-size: 7pt;
+    }
+    .value{
+        font-size: 10pt;
+    }
+}
