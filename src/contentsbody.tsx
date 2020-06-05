@@ -84,6 +84,16 @@ function loadData(localId : string) : [VisualDatas, boolean, Error|undefined]
 export const ContentsBody = () =>{
     const  query : Query  = useParams();
     const [dataForVis, loading, error] = loadData(query.localId);
+    const wid = window.innerWidth;
+    const contentWid = wid
+    const max = dataForVis.max > 1000 ? dataForVis.max : 1000;
+    const min = dataForVis.min -100;
+    const leftStyle = {
+      flex:`0 0 ${wid*0.0}px`
+    }
+    const centerStyle = {
+      flex:`0 0 ${wid}px`
+    }
     if (loading) {  
         return <div>Loading...</div>;
       }
@@ -94,8 +104,12 @@ export const ContentsBody = () =>{
       {
         return (
             <div className="contentsBody">
-                <AirCast dataForVis={dataForVis} width={600} height={200} 
-                    yDomainFrom={350} yDomainTo={1800}/>
+            <div className="contentsLeft" style={leftStyle}/>
+            <div className="contentsCenter" style={centerStyle}>
+                <AirCast dataForVis={dataForVis} width={contentWid} height={contentWid*0.4} 
+                    yDomainFrom={min} yDomainTo={max}/>
+            </div>
+            <div className="contentsRight"/>
             </div>
         )
       }

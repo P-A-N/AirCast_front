@@ -26,8 +26,8 @@ export const AirCast = (props : Props) => {
   const [hintData, setHintData] = useState({x:0,y:0}) 
   const [hintElem, setHintElem] = useState({time:"", y:0})
   const dataForVis = props.dataForVis;
-  const tickNumX = props.width / 85;
-  const tickNumY = props.height / 150;
+  const tickNumX = 6;
+  const tickNumY = 4;
 
   useEffect(()=>{
     let tmStr = getHintXStr(new Date(hintData.x*1000))
@@ -42,22 +42,31 @@ export const AirCast = (props : Props) => {
   if(props.yDomainFrom !== undefined) dataForVis.min = props.yDomainFrom
   if(props.yDomainTo !== undefined ) dataForVis.max = props.yDomainTo
   return (
-    <div className="App">
+    <div className="visbody">
       <XYPlot height={props.height} width={props.width} 
           xType="time"
           yDomain={[dataForVis.min, dataForVis.max]}
-          margin={{bottom: 50, left: 50, right: 10, top: 10}}>
+          margin={{bottom: 30, left: 40, right: 10, top: 10}}>
         <XAxis tickTotal={tickNumX} tickFormat={(v)=>{
             return getTickXStr(new Date(v*1000))}} 
-            tickLabelAngle={-30}
-            title="time"/>
-        <YAxis tickTotal={3} title="ppm"/>
+            tickLabelAngle={-25}
+            title="time"
+            style={{
+              text:{fill:'#999999',fontSize:9}
+            }}/>
+        <YAxis tickTotal={3} title="ppm"
+          style={{
+              text:{fill:'#999999',fontSize:8}
+          }}/>
         <VerticalGridLines tickTotal={tickNumX}/>
         <HorizontalGridLines tickTotal={tickNumY}/>
-        <LineSeries data={dataForVis.datas} style={{strokeLinejoin: "round"}}
+        <LineSeries data={dataForVis.datas} style={{strokeLinejoin: "round",
+            strokeWidth:1
+              }}
             onNearestXY={(value:Co2data) =>{
               if(value.x != hintData.x) setHintData(value) }}
-            stroke={'black'}/>
+            stroke={'black'}
+            />
         {hintData.y > 0 &&
         <MarkSeriesCanvas
             color={'#23daff'}

@@ -9,13 +9,16 @@ import queryString from 'query-string'
 import {ContentsBody} from './contentsbody'
 
 const Layout : React.FC = () => {
-    return (<div className="container">
+    const style_container={
+        width:window.innerWidth
+    }
+
+    return (<div className="container" style={style_container}>
         <Router>
             <Route path="/:localId" exact>
-                <div/><Header/><div/>      
-                {/* <div/><div className="contentsBody">test</div><div/>     */}
-                <div/><ContentsBody/><div/>    
-                <div/><Footer/><div/>
+                <Header/>
+                <ContentsBody />
+                <Footer/>
             </Route>
         </Router>
         </div>)
