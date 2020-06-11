@@ -6,3 +6,4 @@ firebase-debug.log
 .firebaserc
 .firebase/*
 .vscode/*
+.DS_Store
