@@ -39,7 +39,7 @@ function sortData(unsorted : {}) : Array<number[]>
     for( let key in unsorted )
     {
       let keyNo : number = +key.substr(1,key.length-1)
-      if(keyNo > (nowInSec - dayInSec))
+      //if(keyNo > (nowInSec - dayInSec))
       {
         let val : number = (unsorted as Co2DataWithTimeKey)[key]
         arr.push([keyNo, val]);
@@ -62,14 +62,16 @@ function loadData(localId : string) : [VisualDatas, boolean, Error|undefined]
     { idField: "id" }
   );
   let sortedArr = new Array<number[]>()
+  console.log("sort data",values);
   if(values !== undefined)
   {
     values.map((value)=>{
       let arr = sortData(value.datas)
       sortedArr = arr.concat(sortedArr)
     })
-    //console.log(sortedArr)
-    sortedArr.forEach((_data)=>{
+    const size = sortedArr.length;
+    let tgtArr = sortedArr.slice(size-500)
+    tgtArr.forEach((_data)=>{
       let yval = _data[1] as number;
       if( loadedData.max < yval ) loadedData.max = yval;
       if( loadedData.min > yval ) loadedData.min = yval;
@@ -77,6 +79,7 @@ function loadData(localId : string) : [VisualDatas, boolean, Error|undefined]
     })
     //console.log(dataForVis)
   }
+  //console.log("loaded data",loadedData)
   return [loadedData,loading, error];
 }
 
